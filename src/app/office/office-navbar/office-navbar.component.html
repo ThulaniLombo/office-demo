@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+  <h1 class="text-white">{{ office.OfficeName }}</h1>
+  <ul class="navbar-nav flex-row mb-2">
+    <li class="nav-item">
+      <button routerLink="/home" class="m-1 btn btn-light btn-outline-primary">
+        Home
+      </button>
+    </li>
+  </ul>
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <p class="navbar-text text-white">Address: {{ office.OfficeLocation }}</p>
+      <br />
+      <p class="navbar-text text-white">Email: {{ office.OfficeEmail }}</p>
+      <br />
+      <p class="navbar-text text-white">
+        Office Tell: {{ office.OfficeTellNumber }}
+      </p>
+      <br />
+      <p class="navbar-text text-white">
+        Max Capacity: {{ office.OfficeMaxNumberOfOccupants }}
+      </p>
+      <br />
+    </li>
+  </ul>
+</nav>

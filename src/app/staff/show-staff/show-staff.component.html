@@ -1,0 +1,97 @@
+<!-- Modal popup -->
+<!-- Button trigger modal -->
+<div class="form-group" style="padding-top: 1%">
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    (click)="addClick()"
+    data-backdrop="static"
+    data-keyboard="false"
+  >
+    Add Staff
+  </button>
+</div>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-staff
+          [staff]="staff"
+          *ngIf="ActivateAddEditStaffComp"
+        ></app-add-edit-staff>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Staff Name</th>
+      <th>Staff Last Name</th>
+
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let staff of staffList">
+      <td>{{ staff.FirstName }}</td>
+      <td>{{ staff.LastName }}</td>
+      <td>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Select Action
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button
+              class="dropdown-item"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="editStaff(staff)"
+              data-backdrop="static"
+              data-keyboard="false"
+            >
+              Edit Staff
+            </button>
+            <button
+              class="dropdown-item"
+              type="button"
+              (click)="deleteStaff(staff)"
+            >
+              Delete Staff
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

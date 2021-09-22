@@ -1,0 +1,35 @@
+<form #staffForm="ngForm" (ngSubmit)="addStaff(staffForm)">
+  <div class="d-flex flex-row bd-highlight mb-3">
+    <div class="form-froup row" style="width: 60%">
+      <div class="form-group">
+        <div class="col-sm-9">
+          <input
+            type="text"
+            name="FirstName"
+            id="FirstName"
+            class="form-control"
+            [(ngModel)]="firstName"
+            placeholder="First Name"
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-9">
+          <input
+            type="text"
+            name="LastName"
+            id="LastName"
+            class="form-control"
+            [(ngModel)]="lastName"
+            placeholder="Last Name"
+          />
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</form>

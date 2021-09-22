@@ -1,0 +1,111 @@
+<app-nav></app-nav>
+<!-- Modal popup -->
+<!-- Button trigger modal -->
+<div class="form-group" style="padding-top: 1%">
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal"
+    (click)="addClick()"
+    data-keyboard="false"
+    data-backdrop="static"
+  >
+    Add Office
+  </button>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{ ModalTitle }}</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+          (click)="closeClick()"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-office
+          [office]="office"
+          *ngIf="ActivateAddEditOfficeComp"
+        ></app-add-edit-office>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Office Name</th>
+      <th>Email Adress</th>
+      <th>Office tell</th>
+      <th>Address</th>
+      <th>Max number of occupants</th>
+      <th>Office Color</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let office of OfficeList">
+      <td>{{ office.OfficeName }}</td>
+      <td>{{ office.OfficeEmail }}</td>
+      <td>{{ office.OfficeTellNumber }}</td>
+      <td>{{ office.OfficeLocation }}</td>
+      <td>{{ office.OfficeMaxNumberOfOccupants }}</td>
+      <td>{{ office.OfficeColor }}</td>
+      <td>
+        <div class="dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Select Action
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button
+              class="dropdown-item"
+              routerLink="/office/{{ office.id }}"
+              type="button"
+            >
+              View Office
+            </button>
+            <button
+              class="dropdown-item"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              (click)="editOffice(office)"
+              data-backdrop="static"
+              data-keyboard="false"
+            >
+              Edit Office
+            </button>
+            <button
+              class="dropdown-item"
+              type="button"
+              (click)="deleteOffice(office)"
+            >
+              Delete Office
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
